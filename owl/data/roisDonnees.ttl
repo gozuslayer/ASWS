@@ -1,0 +1,47 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://www.bdia.com/rois#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:r1
+    :fils :r3 ;
+    :nom "Francois I" ;
+    a :Roi .
+
+:r10
+    :fille :r6 ;
+    :nom "Marie de Guise" ;
+    a :Reine .
+
+:r2
+    :epouse :r8 ;
+    :nom "Charles IX" ;
+    a :Personne, :Roi .
+
+:r3
+    :nom "Henri II" ;
+    a :Roi .
+
+:r4
+    :epoux :r3 ;
+    :fils :r2, :r5, :r7 ;
+    :nom "Catherine de Medicis" ;
+    a :Reine .
+
+:r5
+    :epouse :r6 ;
+    :nom "Francois II" ;
+    a :Personne .
+
+:r6
+    :nom "Mary Stuart" ;
+    a :Personne .
+
+:r7
+    :nom "Henry III" ;
+    a :Personne .
+
+:r8
+    :nom "Elisabeth d Autriche" ;
+    a :Femme .
+

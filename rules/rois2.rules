@@ -1,0 +1,28 @@
+@prefix :      <http://www.asws.com/rois#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+[epoux1: (?a :epouse ?b) -> (?b :epoux ?a)]
+[epouse1: (?a :epoux ?b) -> (?b :epouse ?a)]
+[regle1: (?x :epouse ?y) -> (?y rdf:type :Femme) (?x rdf:type :Homme)]
+[regle2: (?x :epoux ?y) -> (?y rdf:type :Homme) (?x rdf:type :Femme)]
+[regle3: (?x :fille ?y) -> (?y rdf:type :Femme)]
+[regle4: (?x :fils ?y) -> (?y rdf:type :Homme)]
+[regle5: (:Roi :fille ?x) or (:Reine :fille ?x) -> (?x rdf:type :Princesse)]
+[regle6: (:Roi :fils ?x) -> (?x rdf:type :Prince)]
+[regle7: (?x :enfant ?y) (:Homme rdf:type ?x) ->  (?y rdf:type :fils)]
+[regle8: (?x :enfant ?y) (:Femme rdf:type ?x) ->  (?y rdf:type :fille)]
+[regle9: (?x :fils ?y) ->  (?x :enfant ?y)]
+[regle9bis: (?x :fille ?y) ->  (?x :enfant ?y)]
+[regle10: (?x :enfant ?y) (?y :enfant ?z) ->  (?x :petit_enfant ?z)]
+[regle11: (?x :enfant ?y) (?x :epoux ?z) ->  (?z :enfant ?y)]
+[regle12: (?y :enfant ?x) (:Homme rdf:type ?y) ->  (?x :Pere ?y)]
+[regle13: (?y :enfant ?x) (:Femme rdf:type ?y) ->  (?x :Mere ?y)]
+
+
+
+
+
+
+

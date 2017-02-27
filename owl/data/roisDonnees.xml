@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY rois 'http://www.bdia.com/rois#'>
+    <!ENTITY rdf  'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY xsd  'http://www.w3.org/2001/XMLSchema#'>
+    <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+]>
+
+<rdf:RDF xml:base="http://www.bdia.com/rois"
+ 	 xmlns:rdf="&rdf;" 
+	 xmlns:rdfs="&rdfs;" 
+	 xmlns="&rois;"
+	 xmlns:owl="&owl;">
+ <Roi  rdf:ID='r1'>
+  <nom>Francois I</nom>
+  <fils>
+     <Roi rdf:ID='r3'>
+       <nom>Henri II</nom>
+     </Roi>
+  </fils>
+</Roi>
+<Personne rdf:ID='r2'> 
+   <nom>Charles IX</nom> 
+</Personne>
+
+<Reine rdf:ID='r10'> 
+  <nom>Marie de Guise</nom>
+  <fille rdf:resource='#r6'/>
+</Reine>
+
+<Reine rdf:ID='r4'> 
+  <epoux rdf:resource='#r3'/>
+  <nom>Catherine de Medicis</nom> 
+  <fils>
+     <Personne rdf:ID='r5'>
+      <nom>Francois II</nom>
+      <epouse> 
+        <Personne rdf:ID='r6'> 
+          <nom>Mary Stuart</nom>
+        </Personne>
+      </epouse>
+    </Personne>
+  </fils>
+  <fils rdf:resource='#r2'/>
+  <fils>
+    <Personne rdf:ID='r7'>
+      <nom>Henry III</nom>
+    </Personne>
+  </fils>
+</Reine>
+
+<Roi rdf:about='#r2'>
+  <epouse> 
+    <Femme rdf:ID='r8'> 
+       <nom>Elisabeth d Autriche</nom> 
+    </Femme> 
+  </epouse>
+</Roi>
+
+</rdf:RDF>

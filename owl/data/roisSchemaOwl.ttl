@@ -1,0 +1,118 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://www.bdia.com/rois#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:Femme
+    a owl:Class ;
+    rdfs:subClassOf :Personne .
+
+:Homme
+    a owl:Class ;
+    rdfs:subClassOf :Personne .
+
+:Personne
+    a owl:Class .
+
+:Reine
+    a owl:Class ;
+    rdfs:subClassOf :Femme .
+
+:Roi
+    a owl:Class ;
+    rdfs:subClassOf :Homme .
+
+:descendant
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Personne .
+
+:enfant
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Personne .
+
+:epouse
+    a rdf:Property ;
+    rdfs:domain :Homme ;
+    rdfs:range :Femme .
+
+:epoux
+    a rdf:Property ;
+    rdfs:domain :Femme ;
+    rdfs:range :Homme .
+
+:fille
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Femme ;
+    rdfs:subPropertyOf :enfant .
+
+:fils
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Homme ;
+    rdfs:subPropertyOf :enfant .
+
+:nom
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range rdfs:Literal .
+
+:parent
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Personne .
+
+:epouse
+    a rdf:Property ;
+    rdfs:domain :Homme ;
+    rdfs:range :Femme ;
+    owl:inverseOf :epoux .
+
+:Roi
+    a owl:Class ;
+    rdfs:subClassOf :Homme, [
+    	a owl:Restriction ;
+    	owl:allValuesFrom :Reine ;
+    	owl:onProperty :epouse
+    ] .
+
+:Reine
+    a owl:Class ;
+    rdfs:subClassOf :Femme, [
+    	a owl:Restriction ;
+    	owl:allValuesFrom :Roi ;
+    	owl:onProperty :epoux
+    ] .
+
+:parent
+    a rdf:Property ;
+    rdfs:domain :Personne ;
+    rdfs:range :Personne ;
+    owl:inverseOf :enfant .
+
+:enfantRoyal
+    a owl:Class;
+    rdfs:subClassOf [
+	a owl:Restriction;
+    	owl:onProperty :parent;
+    	owl:someValuesFrom :Reine
+    ] .
+    
+:princesse
+    a owl:Class;
+    rdfs:subClassOf :enfantRoyal, [
+	a owl:Restriction;
+	owl:allValuesFrom :Femme
+    ] .
+
+:prince
+    a owl:Class;
+    rdfs:subClassOf :enfantRoyal, [
+	a owl:Restriction;
+	owl:allValuesFrom :Homme
+    ] .
+
+    
+
